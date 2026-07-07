@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Paz No Es Blanca - Cartografía Social</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #212529; margin: 0; padding: 20px; }
+        header { text-align: center; padding: 40px 20px; background-color: #1a1a1a; color: #ffffff; border-radius: 8px; margin-bottom: 30px; }
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
+        header p { color: #a0a0a0; margin-top: 10px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .mapa-card { background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; padding: 20px; border-left: 5px solid #dc3545; }
+        .mapa-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .mapa-title { font-size: 1.4rem; font-weight: bold; color: #1a1a1a; }
+        .badge { background-color: #dc3545; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
+        .badge-ano { background-color: #6c757d; }
+        .mapa-img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin: 15px auto; border: 1px solid #ddd; }
+        .contexto { font-style: italic; color: #495057; background: #f1f3f5; padding: 15px; border-radius: 4px; }
+        .creditos { font-size: 0.85rem; color: #6c757d; text-align: right; margin-top: 10px; }
+        .no-mapas { text-align: center; padding: 50px; color: #6c757d; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LA PAZ NO ES BLANCA</h1>
+        <p>Cartografía social de líderes sociales asesinados por municipio en Colombia</p>
+    </header>
+
+    <div class="container">
+        {% if mapas %}
+            {% for mapa in mapas %}
+                <div class="mapa-card">
+                    <div class="mapa-header">
+                        <span class="mapa-title">{{ mapa.municipio }} — {{ mapa.get_departamento_display }}</span>
+                        <div>
+                            <span class="badge badge-ano">Año {{ mapa.ano }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if mapa.imagen_mapa %}
+                        <img src="{{ mapa.imagen_mapa.url }}" alt="Mapa de {{ mapa.municipio }}" class="mapa-img">
+                    {% endif %}
+
+                    {% if mapa.contexto_historico %}
+                        <p class="contexto"><strong>Contexto Territorial:</strong> {{ mapa.contexto_historico }}</p>
+                    {% endif %}
+                    
+                    <div class="creditos">
+                        {{ mapa.coautores }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-mapas">
+                <p>Aún no se han publicado mapas en el sistema. ¡Empieza a cargarlos desde el panel de administración!</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
