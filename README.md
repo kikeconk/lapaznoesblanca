@@ -9,23 +9,36 @@ A través de la integración de análisis de datos socioantropológicos y herram
 
 ## ⚖️ Aviso Legal y Propiedad Intelectual
 
-> ⚠️ **IMPORTANTE:** **La Paz No Es Blanca** es una marca de la Fundación Poco a Poco registrada ante la **Superintendencia de Industria y Comercio (SIC)**
-## de la República de Colombia. Queda prohibido cualquier uso comercial no autorizado, reproducción total o parcial del diseño de la marca,
-## o usurpación de la identidad visual de la plataforma sin autorización expresa de su titular.
-## Su uso en este repositorio es estrictamente con fines de desarrollo de software libre y consulta académica.
+> ⚠️ **IMPORTANTE:** **La Paz No Es Blanca** es una marca de la Fundación Poco a Poco registrada ante la **Superintendencia de Industria y Comercio (SIC)** de la República de Colombia. Queda prohibido cualquier uso comercial no autorizado, reproducción total o parcial del diseño de la marca,
+o usurpación de la identidad visual de la plataforma sin autorización expresa de su titular.
+> Su uso en este repositorio es estrictamente con fines de desarrollo de software libre y consulta académica.
+
 
 ---
 
 ## 🚀 Arquitectura y Tecnologías Utilizadas
 
-La plataforma está diseñada bajo una infraestructura escalable que combina el análisis espacial cuantitativo con la robustez del desarrollo web moderno:
+El ecosistema del proyecto está construido con herramientas robustas de código abierto y servicios en la nube para garantizar estabilidad y persistencia:
 
-*   **Backend:** [Django 6.0](https://www.djangoproject.com/) (Python 3.14) administrando la lógica relacional, modelos de datos dinámicos y la API de gestión territorial.
-*   **Base de Datos:** SQLite (Entorno de desarrollo) / PostgreSQL (Producción) para el almacenamiento estructurado de coordenadas, variables sociopolíticas y descriptores municipales.
-*   **Procesamiento Geospatial (Origen de Datos):** Procesamiento previo de coberturas de la Tierra y capas territoriales utilizando imágenes satelitales **Sentinel-2** a través de **QGIS**, **R Studio** y **Google Earth Engine (GEE)**.
-*   **Infraestructura & Despliegue:** Alojado de forma continua en **Render** con enrutamiento personalizado de dominios y seguridad SSL automatizada.
+* **Backend:** Python 3.12 + Django Framework (v6.0.6)
+* **Servidor de Producción (Web Host):** [Render](https://render.com/) (Entorno administrado bajo Python 3.12.3)
+* **Base de Datos:** PostgreSQL / SQLite (Desarrollo local)
+* **Almacenamiento en la Nube (Multimedia):** [Cloudinary](https://cloudinary.com/) (Garantiza que los archivos `.jpg` de los mapas sean permanentes y no se borren con los reinicios del servidor efímero).
+* **Procesamiento de Imágenes:** Pillow (Librería nativa de Python para el manejo de `ImageField`).
+* **Servidor WSGI:** Gunicorn
 
 ---
+
+## 📦 Dependencias Core (`requirements.txt`)
+
+Para asegurar despliegues limpios en entornos Cloud sin conflictos de paquetes locales (como los generados por entornos Anaconda), el proyecto utiliza estrictamente las siguientes dependencias esenciales:
+
+```text
+Django==6.0.6
+cloudinary==1.45.0
+django-cloudinary-storage
+gunicorn==23.0.0
+Pillow==10.3.0
 
 ## 📂 Estructura del Proyecto
 
@@ -40,4 +53,4 @@ El repositorio está organizado siguiendo la arquitectura limpia de aplicaciones
 │   ├── models.py            # Modelos del mapa social (coordenadas, líderes, municipios)
 │   ├── views.py             # Lógica de renderizado con capas de seguridad try-except
 │   └── templates/           # Interfaces e index.html para visualización de mapas
-└── web_lapaz/               # Configuración global del proyecto (settings, urls)
+└── lapaznoesblanca/               # Configuración global del proyecto (settings, urls)
