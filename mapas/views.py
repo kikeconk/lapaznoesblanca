@@ -9,5 +9,5 @@ def index(request):
         # Si la tabla aún no existe en Render, evitamos que la página se caiga
         mapas = None
         
-    # Volvemos a 'index.html' que es la ruta que Django sí reconocía
+    # Usamos 'index.html' que es la ruta que tu configuración reconoce
     return render(request, 'index.html', {'mapas': mapas})
