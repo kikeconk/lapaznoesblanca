@@ -65,11 +65,12 @@ TEMPLATES = [
 WSGI_APPLICATION = "lapaznoesblanca.wsgi.application"
 
 # Database
+import dj_database_url
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default="postgresql://postgres.lihwpavfekyygfapfrov:Miclavei32janer$@aws-0-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+    )
 }
 
 # Password validation
