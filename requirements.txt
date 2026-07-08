@@ -1,5 +1,5 @@
 Django==6.0.6
 cloudinary==1.45.0
-django-cloudinary-storage==0.3.0
+django-cloudinary-storage
 gunicorn==23.0.0
 Pillow==10.3.0
