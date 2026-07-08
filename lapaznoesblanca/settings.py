@@ -86,6 +86,18 @@ TIME_ZONE = "America/Bogota" # Ajustado a tu zona horaria local
 USE_I18N = True
 USE_TZ = True
 
+# Configuración para archivos multimedia en la nube (Cloudinary)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'xhvjpkzs',
+    'API_KEY': '172537597882996',
+    'API_SECRET': 'VKvfgB8-DXMDezPmr0uYDU0rLcw'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
+
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
