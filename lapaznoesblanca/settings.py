@@ -69,10 +69,9 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default="postgresql://postgres.lihwpavfekyygfapfrov:Miclavei32janer$@aws-0-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+        default="postgresql://postgres.lihwpavfekyygfapfrov:Tiberio2007$@aws-0-us-east-1.pooler.supabase.com:5432/postgres"
     )
 }
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
