@@ -90,7 +90,7 @@ USE_TZ = True
 
 # Configuración para archivos multimedia en la nube (Cloudinary)
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'xhvjpkzs',
+    'CLOUD_NAME': 'lihwpavfekyygfapfrov',
     'API_KEY': '172537597882996',
     'API_SECRET': 'VKvfgB8-DXMDezPmr0uYDU0rLcw'
 }
