@@ -25,6 +25,7 @@
 
     <div class="container">
         <header>
+            <!-- Tu hermoso título nuevo -->
             <h1>
                 LA PAZ NO ES BLANCA<br>
                 <span style="background: linear-gradient(45deg, #ff7675, #fdcb6e, #55efc4, #74b9ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">
@@ -35,3 +36,37 @@
                 Cartografía social y de violencia de líderes sociales asesinados por municipio en Colombia
             </p>
         </header>
+
+        <!-- 🔄 AQUÍ RECONECTAMOS TUS MAPAS (El ciclo dinámico de Django) -->
+        {% for mapa in mapas %}
+            <div class="mapa-card">
+                <div class="mapa-header">
+                    <span class="mapa-title">{{ mapa.municipio }} - {{ mapa.departamento }}</span>
+                    <div>
+                        <span class="badge badge-ano">{{ mapa.ano }}</span>
+                        <span class="badge">Líderes asesinados: {{ mapa.cantidad_victimas }}</span>
+                    </div>
+                </div>
+                
+                <!-- La imagen que ahora jala directo de Cloudinary -->
+                {% if mapa.imagen %}
+                    <img src="{{ mapa.imagen.url }}" alt="Mapa de {{ mapa.municipio }}" class="mapa-img">
+                {% endif %}
+                
+                {% if mapa.contexto_violencia %}
+                    <p class="contexto">{{ mapa.contexto_violencia }}</p>
+                {% endif %}
+                
+                <div class="creditos">
+                    Cartografía generada por Ivan Carroll Janer • Postdoctorado UniAndes
+                </div>
+            </div>
+        {% empty %}
+            <div class="no-mapas">
+                <p>No hay mapas cargados en este momento para mostrar.</p>
+            </div>
+        {% endfor %}
+
+    </div> <!-- Cierre de container -->
+</body>
+</html>
