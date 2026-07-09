@@ -90,9 +90,9 @@ USE_TZ = True
 
 # Configuración para archivos multimedia en la nube (Cloudinary)
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'lihwpavfekyygfapfrov',
-    'API_KEY': '172537597882996',
-    'API_SECRET': 'VKvfgB8-DXMDezPmr0uYDU0rLcw'
+    "CLOUD_NAME": "xhvjpkzs",
+    "API_KEY": "172537597882996",
+    "API_SECRET': "VKvfgB8-DXMDezPmr0uYDU0rLcw"
 }
 
 
@@ -105,3 +105,13 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 # Forzar a Django a usar Cloudinary para los archivos que subes
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Configuración moderna de almacenamiento para Django 4.2+ / 5.x
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
