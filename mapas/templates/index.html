@@ -25,7 +25,6 @@
 
     <div class="container">
         <header>
-            <!-- Tu hermoso título nuevo -->
             <h1>
                 LA PAZ NO ES BLANCA<br>
                 <span style="background: linear-gradient(45deg, #ff7675, #fdcb6e, #55efc4, #74b9ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">
@@ -37,7 +36,6 @@
             </p>
         </header>
 
-        <!-- 🔄 AQUÍ RECONECTAMOS TUS MAPAS (El ciclo dinámico de Django) -->
         {% for mapa in mapas %}
             <div class="mapa-card">
                 <div class="mapa-header">
@@ -48,7 +46,6 @@
                     </div>
                 </div>
                 
-                <!-- La imagen que ahora jala directo de Cloudinary -->
                 {% if mapa.imagen %}
                     <img src="{{ mapa.imagen.url }}" alt="Mapa de {{ mapa.municipio }}" class="mapa-img">
                 {% endif %}
@@ -67,6 +64,6 @@
             </div>
         {% endfor %}
 
-    </div> <!-- Cierre de container -->
+    </div>
 </body>
 </html>
