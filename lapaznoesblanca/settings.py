@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",    
+    "cloudinary_storage",
+    "django.contrib.staticfiles", 
+    "cloudinary",
     "mapas", # Tu aplicación de mapas temporales y territoriales
 ]
 
@@ -91,10 +93,23 @@ TIME_ZONE = "America/Bogota" # Ajustado a tu zona horaria local
 USE_I18N = True
 USE_TZ = True
 
+# ☁️ Credenciales de Cloudinary CORREGIDAS (Sintaxis limpia)
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": "xhvjpkzs",
+    "API_KEY": "172537597882996",
+    "API_SECRET": "VKvfgB8-DXMDezPmr0uYDU0rLcw"
+}
+
 # Archivos Estáticos
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# 📂 Archivos Multimedia: Configuración estándar para el volumen permanente de Render
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# 📂 Configuración moderna de almacenamiento para Django (Fuerza el uso de Cloudinary)
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
