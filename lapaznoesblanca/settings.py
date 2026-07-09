@@ -95,9 +95,6 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'VKvfgB8-DXMDezPmr0uYDU0rLcw'
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -106,3 +103,5 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+# Forzar a Django a usar Cloudinary para los archivos que subes
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
