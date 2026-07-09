@@ -2,13 +2,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from mapas import views
+from mapas.views import index  # Importa tu vista principal
 
 urlpatterns = [
-    path('admin/', admin.site.split if hasattr(admin.site, 'split') else admin.site.urls),
-    path('', views.index, name='index'), # La raíz ahora cargará tus mapas
+    # 1. El administrador SIEMPRE debe ir primero para que Django lo reconozca de una vez
+    path('admin/', admin.site.urls),
+    
+    # 2. Tu página principal de mapas
+    path('', index, name='index'),
 ]
 
-# Esto le permite a Django local leer tus JPGs de la carpeta media
+# 3. Las rutas de archivos estáticos y de Cloudinary/Media se ponen AL FINAL
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
