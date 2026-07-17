@@ -35,8 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "cloudinary_storage",
-    "django.contrib.staticfiles", 
-    "cloudinary",
+    "django.contrib.staticfiles",
     "mapas", # Tu aplicación de mapas temporales y territoriales
 ]
 
@@ -93,12 +92,6 @@ TIME_ZONE = "America/Bogota" # Ajustado a tu zona horaria local
 USE_I18N = True
 USE_TZ = True
 
-# ☁️ Credenciales de Cloudinary CORREGIDAS (Sintaxis limpia)
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": "xhvjpkzs",
-    "API_KEY": "172537597882996",
-    "API_SECRET": "VKvfgB8-DXMDezPmr0uYDU0rLcw"
-}
 
 # Archivos Estáticos
 STATIC_URL = "static/"
