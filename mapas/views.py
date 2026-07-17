@@ -30,5 +30,4 @@ def vista_mapas(request):
                 'clase_tamaño': random.choice(tamaños_disponibles) # Asigna un tamaño al azar
             })
 
-# ... todo tu código anterior permanece igual ...
-    return render(request, 'mapas/index.html', {'mapas': lista_mapas})
+return render(request, 'index.html', {'mapas': lista_mapas})
