@@ -6,7 +6,7 @@ from django.conf import settings
 
 def vista_mapas(request):
     # 1. Ruta exacta de la carpeta dentro de tu directorio media
-    ruta_mapas = os.path.join(settings.BASE.DIR, 'media', 'mapas_jpg')
+    ruta_mapas = os.path.join(settings.BASE_DIR, 'media', 'mapas_jpg')
     lista_mapas = []
     
     # 2. Validar que la carpeta exista antes de leerla
