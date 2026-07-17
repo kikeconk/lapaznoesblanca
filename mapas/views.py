@@ -22,7 +22,7 @@ def vista_mapas(request):
         # Definimos clases estéticas de Bootstrap o CSS personalizado
         tamaños_disponibles = ['mapa-grande', 'mapa-mediano', 'mapa-pequeño']
         
-        for img in imagenes:
+        for img in lista_mapas:
             lista_mapas.append({
                 'url': f"{settings.MEDIA_URL}mapas_jpg/{img}",
                 'nombre': img.split('.')[0].replace('_', ' '), # Limpia el nombre para mostrarlo bonito
