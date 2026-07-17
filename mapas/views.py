@@ -31,4 +31,4 @@ def vista_mapas(request):
             })
 
 # ... todo tu código anterior permanece igual ...
-    return render(request, 'mapas/mapas.html', {'mapas': lista_mapas})
+    return render(request, 'mapas/index.html', {'mapas': lista_mapas})
