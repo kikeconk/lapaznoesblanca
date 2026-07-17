@@ -1,18 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include  # Incluimos 'include'
 from django.conf import settings
 from django.conf.urls.static import static
-from mapas.views import index  # Importa tu vista principal
 
 urlpatterns = [
-    # 1. El administrador SIEMPRE debe ir primero para que Django lo reconozca de una vez
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.merge), # Tu ruta de admin existente
     
-    # 2. Tu página principal de mapas
-    path('', index, name='index'),
+    # Enlazamos las URLs de tu aplicación 'mapas'
+    path('', include('mapas.urls')), 
 ]
 
-# 3. Las rutas de archivos estáticos y de Cloudinary/Media se ponen AL FINAL
+# Esto le permite a Django mostrar las imágenes de la carpeta media en desarrollo
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
