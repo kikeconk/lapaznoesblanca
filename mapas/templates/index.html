@@ -37,9 +37,10 @@
         </header>
 
         {% for mapa in mapas %}
-            <div class="mapa-card">
-                <div class="tarjeta-mapa {{ mapa.clase_tamaño }}">
-                    <span class="mapa-title">{{ mapa.municipio }} - {{ mapa.departamento }}</span>
+            <div class="mapa-card {{ mapa.clase_tamaño }}">
+                <div class="tarjeta-mapa">
+                    <img src="/media/mapas_jpg/{{ mapa.archivo }}" alt="Cartografía de {{ mapa.municipio }}" style="width: 100%; height: auto; display: block; border-radius: 4px; margin-bottom: 8px;">
+                    <span class="mapa-title" style="display: block; font-weight: bold;">{{ mapa.municipio }} - {{ mapa.departamento }}</span>
                     <div>
                         <span class="badge badge-ano">{{ mapa.ano }}</span>
                         <span class="badge">Líderes asesinados: {{ mapa.cantidad_victimas }}</span>
