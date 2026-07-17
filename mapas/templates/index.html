@@ -38,7 +38,7 @@
 
         {% for mapa in mapas %}
             <div class="mapa-card">
-                <div class="mapa-header">
+                <div class="tarjeta-mapa {{ mapa.clase_tamaño }}">
                     <span class="mapa-title">{{ mapa.municipio }} - {{ mapa.departamento }}</span>
                     <div>
                         <span class="badge badge-ano">{{ mapa.ano }}</span>

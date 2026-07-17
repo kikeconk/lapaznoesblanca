@@ -5,34 +5,27 @@ from django.shortcuts import render
 from django.conf import settings
 
 def vista_mapas(request):
-    # 1. Ruta exacta de la carpeta dentro de tu directorio media
     ruta_mapas = os.path.join(settings.BASE_DIR, 'media', 'mapas_jpg')
     lista_mapas = []
     
-    # 2. Validar que la carpeta exista antes de leerla
+    # Lista de tamaños estéticos para el mosaico
+    tamaños_disponibles = ['mapa-grande', 'mapa-mediano', 'mapa-pequeño']
+    
     if os.path.exists(ruta_mapas):
         for archivo in os.listdir(ruta_mapas):
             if archivo.endswith(('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')):
-                # 1. Primero limpiamos el nombre del archivo de forma segura usando el texto puro
+                # 1. Limpiamos el nombre del archivo usando el texto puro
                 nombre_bonito = archivo.split('.')[0].replace('_', ' ')
-                # 2. Ahora sí armamos el diccionario con ambos datos separados
+                
+                # 2. Armamos el diccionario final combinando la ruta, el nombre y el tamaño al azar
                 mapa_dict = {
-                        'archivo': archivo,       # Ej: "Alberto_Roman.JPG" (para la ruta de la imagen)
-                        'nombre': nombre_bonito   # Ej: "Alberto Roman" (para el título legible)
+                    'archivo': archivo,
+                    'nombre': nombre_bonito,
+                    'clase_tamaño': random.choice(tamaños_disponibles)
                 }
                 lista_mapas.append(mapa_dict)
-             # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
-             random.shuffle(lista_mapas)
         
-        # 4. Crear una estructura con tamaños variados (Grandes, Medianos, Pequeños)
-        # Definimos clases estéticas de Bootstrap o CSS personalizado
-        tamaños_disponibles = ['mapa-grande', 'mapa-mediano', 'mapa-pequeño']
-        
-        for img in lista_mapas:
-            lista_mapas.append({
-                'url': f"{settings.MEDIA_URL}mapas_jpg/{img}",
-                'nombre': img.split('.')[0].replace('_', ' '), # Limpia el nombre para mostrarlo bonito
-                'clase_tamaño': random.choice(tamaños_disponibles) # Asigna un tamaño al azar
-            })
+        # 3. Desordenamos la lista completa de forma aleatoria (Alineado fuera del ciclo for)
+        random.shuffle(lista_mapas)
 
     return render(request, 'index.html', {'mapas': lista_mapas})
