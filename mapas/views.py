@@ -6,16 +6,15 @@ from django.conf import settings
 
 def vista_mapas(request):
     # 1. Ruta exacta de la carpeta dentro de tu directorio media
-    ruta_mapas = os.path.join(settings.MEDIA_ROOT, 'mapas_jpg')
-    
+    ruta_mapas = os.path.join(settings.BASE.DIR, 'media', 'mapas_jpg')
     lista_mapas = []
     
     # 2. Validar que la carpeta exista antes de leerla
     if os.path.exists(ruta_mapas):
-        archivos = os.listdir(ruta_mapas)
-        # Filtramos para asegurarnos de que solo lea imágenes JPEG o JPG
-        imagenes = [f for f in archivos if f.lower().endswith(('.jpg', '.jpeg'))]
-        
+        for archivo in os.listdir(ruta_mapas):
+            if archivo.lower().endswith(('.jpg', '.jpeg', '.png')):
+                lista_mapas.append(archivo)
+                
         # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
         random.shuffle(imagenes)
         
