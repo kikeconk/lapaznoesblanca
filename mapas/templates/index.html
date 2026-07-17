@@ -32,7 +32,7 @@
                 </span>
             </h1>
             <p>
-                Cartografía social y de violencia de líderes sociales asesinados por municipio en Colombia
+                Cartografía social y de violencia hacia los líderes sociales asesinados en Colombia
             </p>
         </header>
 
@@ -47,7 +47,7 @@
                 </div>
                 
                 {% if mapa.imagen %}
-                    <img src="{{ mapa.imagen.url }}" alt="Mapa de {{ mapa.municipio }}" class="mapa-img">
+                    <img src="/media/mapas_jpg/{{ mapa }}" alt="Mapa de {{ mapa }}"style="max-width: 100%; height: auto;">
                 {% endif %}
                 
                 {% if mapa.contexto_violencia %}
@@ -55,8 +55,8 @@
                 {% endif %}
                 
                 <div class="creditos">
-                    Cartografía generada por Ivan Carroll Janer • Postdoctorado UniAndes
-                </div>
+                    Cartografía y bases de datos por Ivan CARROLL-JANER y Bognan Kadidja SEREME 
+              </div>
             </div>
         {% empty %}
             <div class="no-mapas">

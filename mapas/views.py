@@ -12,7 +12,7 @@ def vista_mapas(request):
     # 2. Validar que la carpeta exista antes de leerla
     if os.path.exists(ruta_mapas):
         for archivo in os.listdir(ruta_mapas):
-            if archivo.lower().endswith(('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')):
+            if archivo.endswith(('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')):
                 lista_mapas.append(archivo)
                 
         # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
