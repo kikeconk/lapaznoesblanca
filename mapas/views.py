@@ -14,9 +14,17 @@ def vista_mapas(request):
         for archivo in os.listdir(ruta_mapas):
             if archivo.endswith(('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')):
                 lista_mapas.append(archivo)
+                    # 1. Primero limpiamos el nombre del archivo de forma segura usando el texto puro
+                    nombre_bonito = archivo.split('.')[0].replace('_', ' ')
                 
-        # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
-        random.shuffle(lista_mapas)
+                # 2. Ahora sí armamos el diccionario con ambos datos separados
+                    mapa_dict = {
+                        'archivo': archivo,       # Ej: "Alberto_Roman.JPG" (para la ruta de la imagen)
+                        'nombre': nombre_bonito   # Ej: "Alberto Roman" (para el título legible)
+                    }
+                
+                # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
+                    random.shuffle(lista_mapas)
         
         # 4. Crear una estructura con tamaños variados (Grandes, Medianos, Pequeños)
         # Definimos clases estéticas de Bootstrap o CSS personalizado
