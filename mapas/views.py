@@ -16,7 +16,7 @@ def vista_mapas(request):
                 lista_mapas.append(archivo)
                 
         # 3. ¡El truco mágico! Desordenar la lista de forma aleatoria en cada recarga
-        random.shuffle(imagenes)
+        random.shuffle(lista_mapas)
         
         # 4. Crear una estructura con tamaños variados (Grandes, Medianos, Pequeños)
         # Definimos clases estéticas de Bootstrap o CSS personalizado
