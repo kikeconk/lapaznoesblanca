@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.merge), # Tu ruta de admin existente
+    path('admin/', admin.site.urls), # Tu ruta de admin existente
     
     # Enlazamos las URLs de tu aplicación 'mapas'
     path('', include('mapas.urls')), 
